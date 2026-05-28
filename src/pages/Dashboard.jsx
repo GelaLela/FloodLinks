@@ -32,6 +32,7 @@ function Dashboard() {
         <div className="nav-links">
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/report">Report</Link>
+          <a href="/">Logout</a>
         </div>
       </div>
 
