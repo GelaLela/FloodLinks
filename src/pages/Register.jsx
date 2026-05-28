@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/dashboard.css";
 
 function Register() {
@@ -51,12 +52,12 @@ function Register() {
 
             <br /><br />
 
-            <select onChange={(e) => setBarangay(e.target.value)}>
-                <option>Select Barangay</option>
-                <option>Arias</option>
-                <option>Isabang</option>
-                <option>Domoit</option>
-                <option>Sariaya</option>
+            <select value={barangay} onChange={(e) => setBarangay(e.target.value)}>
+                <option value="">Select Barangay</option>
+                <option value="Arias">Arias</option>
+                <option value="Isabang">Isabang</option>
+                <option value="Domoit">Domoit</option>
+                <option value="Sariaya">Sariaya</option>
             </select>
 
             <br /><br />
