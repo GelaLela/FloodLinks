@@ -38,13 +38,6 @@ function ReportFlood() {
 
   return (
     <div className="dashboard">
-      <div className="navbar">
-        <h2>FloodLink</h2>
-
-        <div className="nav-links">
-          <Link to="/dashboard">Back</Link>
-        </div>
-      </div>
 
       <div className="dashboard-header">
         <h1>Community Flood Report</h1>
@@ -82,6 +75,8 @@ function ReportFlood() {
         <button onClick={submitReport}>
           Submit Report
         </button>
+        <br></br>
+        <Link to="/dashboard">Back to Dashboard</Link>
 
       </div>
     </div>
