@@ -1,27 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
+  min-height: 100vh;
+  width: 100%;
   background: #eef4f7;
   font-family: 'Poppins', sans-serif;
   color: #0f172a;
 }
 
 /* MAIN DASHBOARD */
-
 .dashboard {
   min-height: 100vh;
-  padding: 30px;
+  width: 100%;
+  padding: clamp(16px, 3vw, 40px);
 }
 
 /* NAVBAR */
-
 .navbar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,15 +59,13 @@ body {
 }
 
 /* HERO SECTION */
-
 .dashboard-header {
   margin-bottom: 40px;
 }
 
 .dashboard-header h1 {
-  font-size: 55px;
+  font-size: clamp(32px, 4vw, 55px);
   line-height: 1.1;
-  max-width: 700px;
   margin-bottom: 20px;
   color: #0f172a;
 }
@@ -67,12 +73,12 @@ body {
 .dashboard-header p {
   color: #64748b;
   font-size: 18px;
-  max-width: 600px;
+  max-width: 100%;
 }
 
 /* WEATHER CARD */
-
 .weather-card {
+  width: 100%;
   background: linear-gradient(135deg, #0f766e, #155e75);
   color: white;
   padding: 35px;
@@ -91,7 +97,6 @@ body {
 }
 
 /* ALERTS */
-
 .alert-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -132,8 +137,8 @@ body {
 }
 
 /* REPORT SECTION */
-
 .report-card {
+  width: 100%;
   background: white;
   padding: 25px;
   border-radius: 24px;
@@ -154,7 +159,6 @@ body {
 }
 
 /* BUTTONS */
-
 button {
   background: linear-gradient(135deg, #0ea5e9, #2563eb);
   border: none;
@@ -173,7 +177,6 @@ button:hover {
 }
 
 /* INPUTS */
-
 input,
 textarea,
 select {
@@ -203,29 +206,22 @@ textarea {
 }
 
 /* MAP */
-
 .map-container {
+  width: 100%;
   margin-top: 40px;
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
-.map-container h2 {
-  margin-bottom: 20px;
-}
-
 /* TITLES */
-
 h2 {
   margin-bottom: 20px;
   font-size: 30px;
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 768px) {
-
   .dashboard {
     padding: 20px;
   }
@@ -238,13 +234,12 @@ h2 {
     flex-direction: column;
     gap: 20px;
   }
-
 }
 
 /* AUTH PAGES */
-
 .auth-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,10 +247,10 @@ h2 {
     linear-gradient(rgba(15,23,42,0.75),
     rgba(15,23,42,0.75)),
     url("https://images.unsplash.com/photo-1527489377706-5bf97e608852?q=80&w=2070&auto=format&fit=crop");
-    
   background-size: cover;
   background-position: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .auth-card {
@@ -318,8 +313,8 @@ h2 {
 }
 
 /* ADMIN STYLES */
-
 .admin-header {
+  width: 100%;
   background: linear-gradient(135deg, #0f172a, #1e293b);
   padding: 35px;
   border-radius: 28px;
@@ -355,4 +350,3 @@ h2 {
 .admin-stat-card p {
   color: #64748b;
 }
-
