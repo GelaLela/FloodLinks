@@ -1,7 +1,9 @@
+import FloodMap from "../components/FloodMap";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link } from "react-router-dom";
+import "../styles/dashboard.css";
 
 function Dashboard() {
   const [reports, setReports] = useState([]);
@@ -20,23 +22,45 @@ function Dashboard() {
   }, []);
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>FloodLink Resident Dashboard</h1>
+    <div className="dashboard">
 
-      <div
-        style={{
-          backgroundColor: "orange",
-          color: "white",
-          padding: 20,
-          width: 250,
-          borderRadius: 10
-        }}
-      >
-        <h2>WARNING</h2>
-        <p>Water Level Rising</p>
+      <div className="navbar">
+        <h2>FloodLink</h2>
+
+        <div className="nav-links">
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/report">Report</Link>
+        </div>
       </div>
 
-      <br />
+      <div className="dashboard-header">
+        <h1>Resident Dashboard</h1>
+        <p>Real-time flood monitoring and alerts</p>
+      </div>
+
+      <div className="weather-card">
+        <h2>Heavy Rainfall Warning</h2>
+        <p>Possible flooding in low-lying barangays.</p>
+      </div>
+
+      <div className="alert-container">
+
+        <div className="alert-card danger">
+          <h2>Danger</h2>
+          <p>Critical Flood Risk</p>
+        </div>
+
+        <div className="alert-card warning">
+          <h2>Warning</h2>
+          <p>Water Level Rising</p>
+        </div>
+
+        <div className="alert-card safe">
+          <h2>Safe</h2>
+          <p>No Flood Detected</p>
+        </div>
+
+      </div>
 
       <Link to="/report">
         <button>Report Flood</button>
@@ -47,19 +71,26 @@ function Dashboard() {
       <h2>Community Reports</h2>
 
       {reports.map((report) => (
-        <div
-          key={report.id}
-          style={{
-            border: "1px solid gray",
-            padding: 10,
-            marginBottom: 10
-          }}
-        >
+        <div key={report.id} className="report-card">
           <h3>{report.location}</h3>
+
+          <p>
+            <strong>Water Depth:</strong> {report.depth}
+          </p>
+
           <p>{report.description}</p>
-          <p>Status: {report.status}</p>
+
+          <p>
+            <strong>Status:</strong> {report.status}
+          </p>
         </div>
       ))}
+
+      <div className="map-container">
+        <h2>Flood Map</h2>
+        <FloodMap />
+      </div>
+
     </div>
   );
 }

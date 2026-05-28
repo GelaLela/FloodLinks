@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase";
+import "../styles/dashboard.css";
 
 function ReportFlood() {
   const [location, setLocation] = useState("");
@@ -24,7 +25,7 @@ function ReportFlood() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="dashboard">
       <h1>Community Flood Report</h1>
 
       <input

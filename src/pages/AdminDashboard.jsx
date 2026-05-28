@@ -7,6 +7,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../firebase";
+import "../styles/dashboard.css";
 
 function AdminDashboard() {
   const [reports, setReports] = useState([]);
@@ -39,66 +40,35 @@ function AdminDashboard() {
   };
 
   return (
-    <div
-      style={{
-        padding: 20,
-        fontFamily: "Arial"
-      }}
-    >
-      <h1>FloodLink Admin Dashboard</h1>
+    <div className="dashboard">
 
-      {/* ALERT STATUS CARDS */}
+      <div className="navbar">
+        <h2>FloodLink Admin</h2>
+      </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: 20,
-          marginTop: 20,
-          marginBottom: 30,
-          flexWrap: "wrap"
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "red",
-            color: "white",
-            padding: 20,
-            borderRadius: 10,
-            width: 200
-          }}
-        >
+      <div className="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p>Monitor flood reports and emergency alerts</p>
+      </div>
+
+      <div className="alert-container">
+
+        <div className="alert-card danger">
           <h2>Danger</h2>
           <p>Critical Flood Risk</p>
         </div>
 
-        <div
-          style={{
-            backgroundColor: "orange",
-            color: "white",
-            padding: 20,
-            borderRadius: 10,
-            width: 200
-          }}
-        >
+        <div className="alert-card warning">
           <h2>Warning</h2>
           <p>Water Level Rising</p>
         </div>
 
-        <div
-          style={{
-            backgroundColor: "green",
-            color: "white",
-            padding: 20,
-            borderRadius: 10,
-            width: 200
-          }}
-        >
+        <div className="alert-card safe">
           <h2>Safe</h2>
           <p>No Flood Detected</p>
         </div>
-      </div>
 
-      {/* REPORTS SECTION */}
+      </div>
 
       <h2>Community Flood Reports</h2>
 
@@ -106,15 +76,8 @@ function AdminDashboard() {
         <p>No reports yet.</p>
       ) : (
         reports.map((report) => (
-          <div
-            key={report.id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: 10,
-              padding: 15,
-              marginBottom: 15
-            }}
-          >
+          <div key={report.id} className="report-card">
+
             <h3>{report.location}</h3>
 
             <p>
@@ -129,19 +92,10 @@ function AdminDashboard() {
               <strong>Status:</strong> {report.status}
             </p>
 
-            <button
-              onClick={() => verifyReport(report.id)}
-              style={{
-                backgroundColor: "blue",
-                color: "white",
-                border: "none",
-                padding: "10px 15px",
-                borderRadius: 5,
-                cursor: "pointer"
-              }}
-            >
+            <button onClick={() => verifyReport(report.id)}>
               Verify Report
             </button>
+
           </div>
         ))
       )}

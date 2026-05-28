@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/dashboard.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="dashboard">
       <h1>FloodLink Login</h1>
 
       <input

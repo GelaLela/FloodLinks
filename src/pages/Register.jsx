@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import "../styles/dashboard.css";
 
 function Register() {
   const [name, setName] = useState("");
@@ -35,7 +36,7 @@ function Register() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="dashboard">
       <h1>Create Account</h1>
 
       <input
