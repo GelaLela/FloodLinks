@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,8 +12,12 @@ function Login() {
   const loginUser = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Login Successful");
-      navigate("/dashboard");
+
+      if (email === "admin@floodlink.com") {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       alert(error.message);
     }
@@ -40,6 +44,10 @@ function Login() {
       <br /><br />
 
       <button onClick={loginUser}>Login</button>
+
+      <br /><br />
+
+      <Link to="/register">Create Account</Link>
     </div>
   );
 }

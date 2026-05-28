@@ -4,14 +4,16 @@ import { db } from "../firebase";
 
 function ReportFlood() {
   const [location, setLocation] = useState("");
+  const [depth, setDepth] = useState("");
   const [description, setDescription] = useState("");
 
   const submitReport = async () => {
     try {
       await addDoc(collection(db, "flood_reports"), {
         location,
+        depth,
         description,
-        status: "pending",
+        status: "Pending Verification",
         createdAt: new Date()
       });
 
@@ -23,12 +25,20 @@ function ReportFlood() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>Report Flood</h1>
+      <h1>Community Flood Report</h1>
 
       <input
         type="text"
         placeholder="Location"
         onChange={(e) => setLocation(e.target.value)}
+      />
+
+      <br /><br />
+
+      <input
+        type="text"
+        placeholder="Water Depth"
+        onChange={(e) => setDepth(e.target.value)}
       />
 
       <br /><br />
@@ -40,7 +50,7 @@ function ReportFlood() {
 
       <br /><br />
 
-      <button onClick={submitReport}>Submit</button>
+      <button onClick={submitReport}>Submit Report</button>
     </div>
   );
 }

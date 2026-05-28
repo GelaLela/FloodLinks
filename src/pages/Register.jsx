@@ -1,15 +1,34 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const [name, setName] = useState("");
+  const [barangay, setBarangay] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const registerUser = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        name,
+        barangay,
+        email,
+        role: "resident"
+      });
+
       alert("Registered Successfully");
+      navigate("/");
     } catch (error) {
       alert(error.message);
     }
@@ -17,7 +36,24 @@ function Register() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>Register</h1>
+      <h1>Create Account</h1>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <br /><br />
+
+      <select onChange={(e) => setBarangay(e.target.value)}>
+        <option>Select Barangay</option>
+        <option>San Juan</option>
+        <option>Santa Ana</option>
+        <option>Tuktukan</option>
+      </select>
+
+      <br /><br />
 
       <input
         type="email"
