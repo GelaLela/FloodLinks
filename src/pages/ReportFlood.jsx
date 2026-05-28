@@ -19,6 +19,10 @@ function ReportFlood() {
       });
 
       alert("Flood Report Submitted");
+
+      setLocation("");
+      setDepth("");
+      setDescription("");
     } catch (error) {
       alert(error.message);
     }
@@ -31,6 +35,7 @@ function ReportFlood() {
       <input
         type="text"
         placeholder="Location"
+        value={location}
         onChange={(e) => setLocation(e.target.value)}
       />
 
@@ -39,6 +44,7 @@ function ReportFlood() {
       <input
         type="text"
         placeholder="Water Depth"
+        value={location}
         onChange={(e) => setDepth(e.target.value)}
       />
 
@@ -46,6 +52,7 @@ function ReportFlood() {
 
       <textarea
         placeholder="Description"
+        value={location}
         onChange={(e) => setDescription(e.target.value)}
       />
 
