@@ -2,6 +2,7 @@ import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/dashboard.css";
 
 function ReportFlood() {
@@ -39,6 +40,13 @@ function ReportFlood() {
   return (
     <div className="dashboard">
 
+      <div className="navbar">
+        <h2>FloodLink</h2>
+
+        <div className="nav-links">
+          <Link to="/dashboard">Back</Link>
+        </div>
+      </div>
       <div className="dashboard-header">
         <h1>Community Flood Report</h1>
         <p>Submit flood incidents in your barangay</p>
