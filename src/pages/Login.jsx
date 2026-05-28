@@ -25,31 +25,40 @@ function Login() {
   };
 
   return (
-    <div className="dashboard">
-      <h1>FloodLink Login</h1>
+    <div className="auth-container">
 
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className="auth-card">
 
-      <br /><br />
+        <h1>FloodLink Login</h1>
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <p>Real-time flood monitoring and community reporting</p>
 
-      <br /><br />
+        <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <button onClick={loginUser}>Login</button>
+        <br /><br />
 
-      <br /><br />
+        <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <Link to="/register">Create Account</Link>
+        <br /><br />
+
+        <button onClick={loginUser}>Login</button>
+
+        <div className="auth-footer">
+            <Link to="/register">
+            Create Account
+            </Link>
+        </div>
     </div>
+    </div>
+    
   );
 }
 

@@ -10,7 +10,8 @@ function Dashboard() {
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "flood_reports"), (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
+      const data = snapshot.docs
+      .map((doc) => ({
         id: doc.id,
         ...doc.data()
       }))

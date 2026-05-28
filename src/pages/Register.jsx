@@ -36,43 +36,53 @@ function Register() {
   };
 
   return (
-    <div className="dashboard">
-      <h1>Create Account</h1>
+    <div className="auth-container">
+        <div className="auth-card">
 
-      <input
-        type="text"
-        placeholder="Full Name"
-        onChange={(e) => setName(e.target.value)}
-      />
+            <h1>Create Account</h1>
 
-      <br /><br />
+            <p>Join FloodLink to report and monitor flood incidents in your community</p>
 
-      <select onChange={(e) => setBarangay(e.target.value)}>
-        <option>Select Barangay</option>
-        <option>San Juan</option>
-        <option>Santa Ana</option>
-        <option>Tuktukan</option>
-      </select>
+            <input
+                type="text"
+                placeholder="Full Name"
+                onChange={(e) => setName(e.target.value)}
+            />
 
-      <br /><br />
+            <br /><br />
 
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+            <select onChange={(e) => setBarangay(e.target.value)}>
+                <option>Select Barangay</option>
+                <option>Arias</option>
+                <option>Isabang</option>
+                <option>Domoit</option>
+                <option>Sariaya</option>
+            </select>
 
-      <br /><br />
+            <br /><br />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+            <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+            />
 
-      <br /><br />
+            <br /><br />
 
-      <button onClick={registerUser}>Register</button>
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br /><br />
+
+            <button onClick={registerUser}>Register</button>
+
+            <div className="auth-footer">
+                <Link to="/">Back to login</Link>
+            </div>
+        </div>
     </div>
   );
 }

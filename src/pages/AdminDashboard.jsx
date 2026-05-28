@@ -14,10 +14,13 @@ function AdminDashboard() {
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "flood_reports"), (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }));
+
+      const data = snapshot.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        .reverse();
 
       setReports(data);
     });
@@ -34,6 +37,7 @@ function AdminDashboard() {
       });
 
       alert("Report Verified");
+
     } catch (error) {
       alert(error.message);
     }
@@ -42,14 +46,49 @@ function AdminDashboard() {
   return (
     <div className="dashboard">
 
+      {/* NAVBAR */}
+
       <div className="navbar">
         <h2>FloodLink Admin</h2>
+
+        <div className="nav-links">
+          <a href="/admin">Dashboard</a>
+          <a href="/">Logout</a>
+        </div>
       </div>
 
-      <div className="dashboard-header">
-        <h1>Admin Dashboard</h1>
-        <p>Monitor flood reports and emergency alerts</p>
+      {/* ADMIN HEADER */}
+
+      <div className="admin-header">
+        <h1>FloodLink Control Center</h1>
+
+        <p>
+          Real-time barangay flood monitoring dashboard
+        </p>
       </div>
+
+      {/* ADMIN STATS */}
+
+      <div className="admin-stats">
+
+        <div className="admin-stat-card">
+          <h2>{reports.length}</h2>
+          <p>Total Reports</p>
+        </div>
+
+        <div className="admin-stat-card">
+          <h2>3</h2>
+          <p>Critical Areas</p>
+        </div>
+
+        <div className="admin-stat-card">
+          <h2>12</h2>
+          <p>Active Sensors</p>
+        </div>
+
+      </div>
+
+      {/* ALERT CARDS */}
 
       <div className="alert-container">
 
@@ -70,13 +109,22 @@ function AdminDashboard() {
 
       </div>
 
+      {/* REPORTS */}
+
       <h2>Community Flood Reports</h2>
 
       {reports.length === 0 ? (
+
         <p>No reports yet.</p>
+
       ) : (
+
         reports.map((report) => (
-          <div key={report.id} className="report-card">
+
+          <div
+            key={report.id}
+            className="report-card"
+          >
 
             <h3>{report.location}</h3>
 
@@ -92,13 +140,20 @@ function AdminDashboard() {
               <strong>Status:</strong> {report.status}
             </p>
 
-            <button onClick={() => verifyReport(report.id)}>
+            <br />
+
+            <button
+              onClick={() => verifyReport(report.id)}
+            >
               Verify Report
             </button>
 
           </div>
+
         ))
+
       )}
+
     </div>
   );
 }
