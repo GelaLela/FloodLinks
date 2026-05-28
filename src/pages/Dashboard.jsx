@@ -13,7 +13,8 @@ function Dashboard() {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
-      }));
+      }))
+      .reverse();
 
       setReports(data);
     });
