@@ -135,7 +135,6 @@ body {
 
 .report-card {
   background: white;
-  color: #475569;
   padding: 25px;
   border-radius: 24px;
   margin-top: 20px;
@@ -188,6 +187,7 @@ select {
   font-family: 'Poppins', sans-serif;
   outline: none;
   transition: 0.3s;
+  color: #475569;
 }
 
 input:focus,
